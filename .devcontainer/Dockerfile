@@ -1,6 +1,6 @@
 FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
 
-ARG PYTHON_VERSION=3.8
+ARG PYTHON_VERSION=3.9
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
