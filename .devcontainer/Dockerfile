@@ -28,7 +28,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 # Create virtual environment and add to path (this is equivalent to activating it)
 ENV VIRTUAL_ENV=/opt/venv
-RUN python${PYTHON_VERSION} -m venv $VIRTUAL_ENV
+RUN python${PYTHON_VERSION} -m venv $VIRTUAL_ENV && chmod -R a+rwX $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install requirements
