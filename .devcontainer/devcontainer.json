@@ -1,5 +1,7 @@
 {
-	"name": "Deep Learning GPU: CUDA 11.3",
+	"name": "Deep Learning GPU",
+	// If you want to pull from a pre-built image, uncomment the line below and comment out 'build'
+	//"image":
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
