@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.3.1-cudnn8-devel-ubuntu20.04 as devcontainer
 
 ARG PYTHON_VERSION=3.8
 
@@ -35,3 +35,10 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt /tmp/pip-tmp/
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
     && rm -rf /tmp/pip-tmp
+
+
+# when building with --target devcontainer, the following will not be executed
+FROM devcontainer as production
+
+COPY main.py /app/main.py
+CMD ["python", "/app/main.py"]

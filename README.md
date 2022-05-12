@@ -17,6 +17,16 @@ Yes, you will need to have Docker with the Nvidia container runtime installed. I
 
 Simply run `Remote containers: Clone Repository in Container Volume` from the VScode command palette to clone the repository in an isolated volume, build the image, and spin up a container. Alternatively, you can clone the repository normally and run `Remote containers: Open Folder in Container` - I sometimes find the second method to be a bit more reliable.
 
+The above steps will give you a VSCode window attached to the container to use as a development environment. If you want to use docker in a more traditional way, i.e build an image and run it as a traditional executable, you can first build with:
+
+`docker build -t deep-learning-devcontainers/production:latest -f .devcontainer/Dockerfile .`
+
+Then run with:
+
+`docker run --privileged --gpus=all deep-learning-devcontainers/production:latest`
+
+This will run the `main.py` file with all dependencies installed and return the result.
+
 ## What does this example container do?
 
 This container gives you a Ubuntu 20.04 environment with CUDA 11.3, Python 3.8 and the packages from the `requirements.txt` file. The `main.py` file simply includes some code for checking that the deep learning libraries installed can successfully see your GPU.
